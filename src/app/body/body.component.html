@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="app">
+      <div class="header-container">
+        <header>
+          <h1>Basic CRUD UI</h1>
+        </header>
+        <input type="text" id="myInput"  placeholder="Search for names.." (keyup)="filterTable($event.target, table.getElementsByTagName('tr'))">
+  
+      </div>
+      <div class='table-container'>
+        <table #table id="myTable">
+          <thead>
+            <tr class="header">
+              <th style="width:10%;">ID</th>
+              <th style="width:60%;">Nome</th>
+              <th style="width:20%">Sigla</th>
+              <th style="width:10%">Ações</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let pais of paises">
+            <tr>
+              <td>{{pais.id_pais}}</td>
+              <td>{{pais.pais_nome}}</td>
+              <td>{{pais.pais_sigla}}</td>
+              <td><a href=''>Edt</a><a href=''>Del</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
