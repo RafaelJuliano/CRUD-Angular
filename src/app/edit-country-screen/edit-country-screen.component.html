@@ -1,0 +1,18 @@
+<div class="form" [class.visible]="editScreenVisible">
+    <p>Editar dados do país {{countryToEdit[1]}}</p>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="input-box">
+        <label for="editName">Nome:</label>
+        <input id="editName" name="editName" ngModel pattern="[a-zA-Z ]*" type="text" maxlength="30"  required placeholder="Utilize apenas letras ex: BRASIL">
+      </div>
+      <div class="input-box">
+        <label for="editInitial">Sigla:</label>
+        <input id="editInitial" name="editInitial" ngModel pattern="[a-zA-Z ]*" type="text" minlength="3" maxlength="3" required placeholder="Utilize apenas letras ex: BRA">
+      </div>
+      <div class="button-box">
+        <button class="submit" type="submit" [disabled]="f.form.invalid">Gravar</button>
+        <button class="cancel" (click)="cancel()" type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+

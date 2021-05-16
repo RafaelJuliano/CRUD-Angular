@@ -54,16 +54,16 @@ button {
     cursor: pointer;
 }
 
-button#submit{
+button.submit{
     background-color: lightgreen;
 }
 
-button#submit:disabled{
+button.submit:disabled{
     color: #444;
     filter: grayscale(80%);
     cursor:no-drop;
 }
-button#cancel{
+button.cancel{
     background-color: tomato;
 }
 

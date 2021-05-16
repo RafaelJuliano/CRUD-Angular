@@ -8,6 +8,10 @@
                           [selectedStateID]="selectedStateID"
                           (cancelAddScreen)="cancelAddScreenVisible($event)"
                           (refreshCityList)="getCities()"></app-add-city-screen>
+  <app-edit-city-screen [editScreenVisible]="editScreenVisible"
+                          [cityToEdit]="cityToEdit"
+                          (cancelEditScreen)="cancelEditScreenVisible($event)"
+                         (refreshCityList)="getCities()"></app-edit-city-screen>                        
 
 <!--STATE TABLE-->             
     <table #table id="myTable">
@@ -27,7 +31,8 @@
             <td> {{city.id_cidade}}</td>
             <td>{{city.cidade_nome}}</td>
             <td>
-              <button class="edit">
+              <button class="edit"
+              (click)="changeEditScreenVisible(city.id_cidade, city.cidade_nome)">
                 <img src="/assets/icons/edit-icon.png" />
               </button>
               <button class='remove'>

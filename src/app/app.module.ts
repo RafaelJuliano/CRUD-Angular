@@ -15,6 +15,9 @@ import { CityTableComponent } from './city-table/city-table.component';
 import { AddCountryScreenComponent } from './add-country-screen/add-country-screen.component';
 import { AddStateScreenComponent } from './add-state-screen/add-state-screen.component';
 import { AddCityScreenComponent } from './add-city-screen/add-city-screen.component';
+import { EditCountryScreenComponent } from './edit-country-screen/edit-country-screen.component';
+import { EditStateScreenComponent } from './edit-state-screen/edit-state-screen.component';
+import { EditCityScreenComponent } from './edit-city-screen/edit-city-screen.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { AddCityScreenComponent } from './add-city-screen/add-city-screen.compon
     CityTableComponent,
     AddCountryScreenComponent,
     AddStateScreenComponent,
-    AddCityScreenComponent
+    AddCityScreenComponent,
+    EditCountryScreenComponent,
+    EditStateScreenComponent,
+    EditCityScreenComponent
   ],
   imports: [
     BrowserModule,

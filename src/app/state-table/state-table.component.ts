@@ -12,6 +12,8 @@ export class StateTableComponent implements OnInit {
   @Input() public addScreenVisible = false;
   @Input() public selectedCountryID : number = 0;
   readonly apiURL : string;
+  @Input() public editScreenVisible = false;
+  public stateToEdit : any[] = [0, 'name'];
   inputValue : String | undefined;
   public states :any;
   
@@ -44,5 +46,16 @@ export class StateTableComponent implements OnInit {
   cancelAddScreenVisible($event : boolean){
     console.log('event = '+$event)
     this.addScreenVisible = $event;
+  }
+
+  changeEditScreenVisible(id:number, name:string){
+    this.editScreenVisible = !this.editScreenVisible;
+    this.stateToEdit = [id, name];
+    console.log(`Edit state screen is visible = ${this.editScreenVisible}`)
+  }
+
+  cancelEditScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.editScreenVisible = $event;
   }
 }

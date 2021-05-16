@@ -4,7 +4,7 @@
     background-color: #606e79;
     color: #fff;
     height: fit-content;
-    width: 20vw;
+    width: 30vw;
     padding: 50px;
     z-index: 1;
     left: 0; 
@@ -33,7 +33,7 @@ p {
     border: none;
     border-radius: 8px;
     padding: 5px 10px;
-    width: 15vw;
+    width: 20vw;
 }
 
 .input-box input:focus{

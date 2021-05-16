@@ -135,15 +135,21 @@ a {
   color: #444;
 }
 
-.form {
-  display: block;
-  padding: 25px;
-  background-color: #fff;
-  border-radius: 8px;
-  border: 1px solid #444;
-  width: 25vw;
-  height: 30vw;
+.teste {
+  display: none;
   position: absolute;
-  top: 20vh;
-  left: 37.5vw;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-color:red;
+  color: #333;
 }
+
+.visible {
+  display: block;
+}
+

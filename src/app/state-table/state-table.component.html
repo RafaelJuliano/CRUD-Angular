@@ -8,6 +8,10 @@
                           [selectedCountryID]="selectedCountryID"
                           (cancelAddScreen)="cancelAddScreenVisible($event)"
                           (refreshStateList)="getStates()"></app-add-state-screen>
+ <app-edit-state-screen [editScreenVisible]="editScreenVisible"
+                           [stateToEdit]="stateToEdit"
+                           (cancelEditScreen)="cancelEditScreenVisible($event)"
+                          (refreshStateList)="getStates()"></app-edit-state-screen>
 
 <!--STATE TABLE-->                          
   <table #table id="myTable">
@@ -29,7 +33,8 @@
           <td class="pointer" (click)="selectState(state.id_estado)">{{state.estado_nome}}</td>
           <td>{{state.estado_sigla}}</td>
           <td>
-            <button class="edit">
+            <button class="edit"
+            (click)="changeEditScreenVisible(state.id_estado, state.estado_nome)">
               <img src="/assets/icons/edit-icon.png" />
             </button>
             <button class='remove'>

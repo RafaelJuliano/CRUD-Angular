@@ -11,6 +11,8 @@ export class CityTableComponent implements OnInit {
   @Input() public addScreenVisible = false;
   @Input() selectedStateID : number = 0;
   readonly apiURL : string;
+  @Input() public editScreenVisible = false;
+  public cityToEdit : any[] = [0, 'name'];
   public cities :any;
   
   constructor(private http : HttpClient) {
@@ -40,5 +42,16 @@ export class CityTableComponent implements OnInit {
   cancelAddScreenVisible($event : boolean){
     console.log('event = '+$event)
     this.addScreenVisible = $event;
+  }
+
+  changeEditScreenVisible(id:number, name:string){
+    this.editScreenVisible = !this.editScreenVisible;
+    this.cityToEdit = [id, name];
+    console.log(`Edit city screen is visible = ${this.editScreenVisible}`)
+  }
+
+  cancelEditScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.editScreenVisible = $event;
   }
 }
