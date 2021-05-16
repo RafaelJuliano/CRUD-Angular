@@ -60,7 +60,6 @@ img {
   cursor: pointer;
 }
 
-
 .table-container {
   background-color: #eee;
   border-radius: 0 0 8px 8px;
@@ -100,8 +99,7 @@ img {
   top: 0;
 }
 
-.title {
-  max-height: 18.75px;
+.title {  
   display: flex;
   justify-content: space-around;
   margin: 0;

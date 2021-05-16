@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class StateTableComponent implements OnInit {
   @Output() selectedState = new EventEmitter();
   @Output() tableLayer = new EventEmitter();
-  @Input() selectedCountryID : number = 0;
+  @Input() public addScreenVisible = false;
+  @Input() public selectedCountryID : number = 0;
   readonly apiURL : string;
   inputValue : String | undefined;
   public states :any;
@@ -33,5 +34,15 @@ export class StateTableComponent implements OnInit {
     this.selectedState.emit(id);
     console.log("Changing the table layer to city...")
     this.tableLayer.emit('city');    
+  }
+
+  changeAddScreenVisible(){
+    this.addScreenVisible = !this.addScreenVisible;
+    console.log(`Add country screen is visible = ${this.addScreenVisible}`)
+  }
+  
+  cancelAddScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.addScreenVisible = $event;
   }
 }

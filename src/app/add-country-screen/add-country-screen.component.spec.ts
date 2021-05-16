@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BtnAddCountryComponent } from './btn-add-country.component';
+import { AddCountryScreenComponent } from './add-country-screen.component';
 
-describe('BtnAddCountryComponent', () => {
-  let component: BtnAddCountryComponent;
-  let fixture: ComponentFixture<BtnAddCountryComponent>;
+describe('AddCountryScreenComponent', () => {
+  let component: AddCountryScreenComponent;
+  let fixture: ComponentFixture<AddCountryScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BtnAddCountryComponent ]
+      declarations: [ AddCountryScreenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BtnAddCountryComponent);
+    fixture = TestBed.createComponent(AddCountryScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

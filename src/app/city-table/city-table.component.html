@@ -1,7 +1,15 @@
 <div class='table-container'>
-    <button class="add">
+
+  <!--ADD STATE COMPONENTS-->
+    <button class="add" (click)="changeAddScreenVisible()">
       <img  src="/assets/icons/add-icon.png" />
     </button>
+    <app-add-city-screen [addScreenVisible]="addScreenVisible"
+                          [selectedStateID]="selectedStateID"
+                          (cancelAddScreen)="cancelAddScreenVisible($event)"
+                          (refreshCityList)="getCities()"></app-add-city-screen>
+
+<!--STATE TABLE-->             
     <table #table id="myTable">
       <thead>
         <tr class="header">

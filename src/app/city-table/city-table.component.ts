@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CityTableComponent implements OnInit {
   @Output() selectedCity = new EventEmitter();
+  @Input() public addScreenVisible = false;
   @Input() selectedStateID : number = 0;
   readonly apiURL : string;
   public cities :any;
@@ -17,10 +18,10 @@ export class CityTableComponent implements OnInit {
   }  
 
   ngOnInit(){
-    this.getStates();
+    this.getCities();
   }
 
-  getStates() {
+  getCities() {
     console.log(`Searching for cities with StateID = ${this.selectedStateID}`)
     this.http.get(`${ this.apiURL }/select/cidades/${this.selectedStateID}`)
              .subscribe(res => this.cities = res);            
@@ -29,5 +30,15 @@ export class CityTableComponent implements OnInit {
   selectCity(id :number){
     console.log(`City id: ${id} emited from city-table`)
     this.selectedCity.emit(id);  
+  }
+
+  changeAddScreenVisible(){
+    this.addScreenVisible = !this.addScreenVisible;
+    console.log(`Add country screen is visible = ${this.addScreenVisible}`)
+  }
+  
+  cancelAddScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.addScreenVisible = $event;
   }
 }

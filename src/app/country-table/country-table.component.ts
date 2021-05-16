@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,6 +12,7 @@ export class CountryTableComponent implements OnInit {
   readonly apiURL : string;
   inputValue : String | undefined;
   public countries :any;
+  @Input() public addScreenVisible = false;
 
   constructor(private http : HttpClient) {
     this.apiURL = 'http://localhost:8888';
@@ -23,7 +24,8 @@ export class CountryTableComponent implements OnInit {
 
   getCountries() {
     this.http.get(`${ this.apiURL }/select/paises/`)
-             .subscribe(res => this.countries = res);  
+             .subscribe(res => this.countries = res);
+             console.log("Country list updated");  
   }
 
   selectCountry(id :number){
@@ -32,4 +34,15 @@ export class CountryTableComponent implements OnInit {
     console.log("Changing the table layer to state...")
     this.tableLayer.emit('state');    
   }
+
+  changeAddScreenVisible(){
+    this.addScreenVisible = !this.addScreenVisible;
+    console.log(`Add country screen is visible = ${this.addScreenVisible}`)
+  }
+
+  cancelAddScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.addScreenVisible = $event;
+  }
+
 }

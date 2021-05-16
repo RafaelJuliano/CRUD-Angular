@@ -1,7 +1,15 @@
 <div class='table-container'>
-  <button class="add">
+
+<!--ADD COUNTRY COMPONENTS-->
+  <button class="add"
+          (click)="changeAddScreenVisible()">
     <img  src="/assets/icons/add-icon.png" />
   </button>
+  <app-add-country-screen [addScreenVisible]="addScreenVisible"
+                          (cancelAddScreen)="cancelAddScreenVisible($event)"
+                          (refreshCountryList)="getCountries()"></app-add-country-screen>
+
+<!--COUNTRY TABLE-->
   <table #table id="myTable">
     <thead>
       <tr class="header">
@@ -14,12 +22,13 @@
         <th style="width:10%">Ações</th>
       </tr>
     </thead>
-
     <tbody *ngFor="let country of countries">     
         <tr> 
           <td class="pointer" (click)="selectCountry(country.id_pais)">{{country.id_pais}}</td>
           <td class="pointer" (click)="selectCountry(country.id_pais)">{{country.pais_nome}}</td>
           <td>{{country.pais_sigla}}</td>
+           
+          <!--EDIT AND REMOVE COMPONENTS-->
           <td>
             <button class="edit">
               <img src="/assets/icons/edit-icon.png" />

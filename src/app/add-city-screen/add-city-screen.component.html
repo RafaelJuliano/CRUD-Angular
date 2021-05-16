@@ -1,0 +1,14 @@
+<div class="form" [class.visible]="addScreenVisible">
+    <p>Adicionar nova CIdade</p>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="input-box">
+        <label for="name">Nome:</label>
+        <input id="name" name="name" ngModel pattern="[a-zA-Z ]*" type="text" maxlength="30"  required placeholder="Utilize apenas letras ex: BLUMENAU">
+      </div>
+      <div class="button-box">
+        <button id="submit" type="submit" [disabled]="f.form.invalid">Gravar</button>
+        <button id="cancel" (click)="cancel()" type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
