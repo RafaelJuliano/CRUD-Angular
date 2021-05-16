@@ -8,18 +8,18 @@
         <th style="width:10%;">ID</th>
         <th class='title'>
           <p>Nome</p>
-          <span>Cadastro de Países</span>
+          <span>Cadastro de Estados</span>
         </th>
         <th style="width:20%">Sigla</th>
         <th style="width:10%">Ações</th>
       </tr>
     </thead>
 
-    <tbody *ngFor="let country of countries">     
-        <tr> 
-          <td class="pointer" (click)="selectCountry(country.id_pais)">{{country.id_pais}}</td>
-          <td class="pointer" (click)="selectCountry(country.id_pais)">{{country.pais_nome}}</td>
-          <td>{{country.pais_sigla}}</td>
+    <tbody *ngFor="let state of states">     
+        <tr>
+          <td class="pointer" (click)="selectState(state.id_estado)"> {{state.id_estado}}</td>
+          <td class="pointer" (click)="selectState(state.id_estado)">{{state.estado_nome}}</td>
+          <td>{{state.estado_sigla}}</td>
           <td>
             <button class="edit">
               <img src="/assets/icons/edit-icon.png" />

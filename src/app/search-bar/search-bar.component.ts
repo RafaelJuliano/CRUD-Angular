@@ -15,9 +15,6 @@ export class SearchBarComponent implements OnInit {
   filterTable(event:any) {
     var filter, table, tr, td, i, txtValue;    
     filter = event.value.toUpperCase();
-    //var input, filter, table, tr, td, i, txtValue;    
-    //input = <HTMLInputElement>document.getElementById('myInput');
-    //filter = input.value.toUpperCase();  
     table = <HTMLInputElement>document.getElementById("myTable")
     tr = table.getElementsByTagName('tr');
 

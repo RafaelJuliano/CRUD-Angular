@@ -1,6 +1,23 @@
 <div class="aplication" [ngSwitch]="tableLayer">
-
+    <app-btn-back (selectedIDs)="backToHome($event)"  (tableLayer)="selectTableLayer($event)"></app-btn-back>
     <app-header></app-header>
-    <app-country-table *ngSwitchCase="'country'"></app-country-table>
-  
+
+    <app-country-table *ngSwitchCase="'country'" 
+                        (selectedCountry)="selectCountryID($event)" 
+                        (tableLayer)="selectTableLayer($event)">
+    </app-country-table >
+
+    <app-state-table *ngSwitchCase="'state'" 
+                      [selectedCountryID]="selectedCountryID" 
+                      (selectedState)="selectStateID($event)" 
+                      (tableLayer)="selectTableLayer($event)">
+    </app-state-table>
+
+    <app-city-table *ngSwitchCase="'city'" 
+                    [selectedStateID]="selectedStateID" 
+                    (selectedCity)="selectCityID($event)">
+
+
+    </app-city-table>
+
   </div>

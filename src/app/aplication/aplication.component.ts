@@ -17,8 +17,14 @@ export class AplicationComponent implements OnInit {
 
   constructor() {}
 
-  selectCountryID($event: number) {
-    this.selectedCountryID = $event;
+  selectTableLayer($event : string){
+    this.tableLayer = $event;
+    console.log(`The table layer was change to ${this.tableLayer} sending the IDs: country =${this.selectedCountryID}; state =${this.selectedStateID}; city${this.selectedCityID};`)
+  }
+
+  selectCountryID(id: number) {
+    this.selectedCountryID = id;
+    console.log(`The actual value of selectedCountryID on aplication is ${this.selectedCountryID}`)
   }
 
   selectStateID($event: number) {
@@ -26,6 +32,12 @@ export class AplicationComponent implements OnInit {
   }
 
   selectCityID($event: number) {
+    this.selectedCityID = $event;
+  }
+  
+  backToHome($event: number){
+    this.selectedCountryID = $event;
+    this.selectedStateID = $event;
     this.selectedCityID = $event;
   }
 

@@ -1,0 +1,26 @@
+.btn-back {
+    position: absolute;
+    background-color: #8da1b1;
+    border: 0.3px solid #666;
+    border-radius: 0 8px 0 8px;
+    width: 50px;
+    height: 20px;
+    right: 10vw;
+    cursor: pointer;
+}
+
+.btn-back:hover{
+    background-color: #9aafc0
+}
+
+@media (max-width: 900px) {
+.btn-back{
+    right: 0;
+    border-radius: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

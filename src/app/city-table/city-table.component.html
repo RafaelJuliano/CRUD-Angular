@@ -1,0 +1,32 @@
+<div class='table-container'>
+    <button class="add">
+      <img  src="/assets/icons/add-icon.png" />
+    </button>
+    <table #table id="myTable">
+      <thead>
+        <tr class="header">
+          <th style="width:10%;">ID</th>
+          <th class='title'>
+            <p>Nome</p>
+            <span>Cadastro de Cidades</span>
+          </th>
+          <th style="width:10%">Ações</th>
+        </tr>
+      </thead>
+  
+      <tbody *ngFor="let city of cities">     
+          <tr>
+            <td> {{city.id_cidade}}</td>
+            <td>{{city.cidade_nome}}</td>
+            <td>
+              <button class="edit">
+                <img src="/assets/icons/edit-icon.png" />
+              </button>
+              <button class='remove'>
+                <img src="/assets/icons/trash-icon.png" />
+              </button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
