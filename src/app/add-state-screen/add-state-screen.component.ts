@@ -22,11 +22,30 @@ export class AddStateScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm) {
-    
+  verifyNames(formName: string, formInit: string) {
+    let table = <HTMLInputElement>document.getElementById("myTable")
+    let tr = table.getElementsByTagName('tr');
+    let i, td, nameValue, initValue, nameTd, initTd;
+    for (i = 0; i < tr.length; i++) {
+      nameTd = tr[i].getElementsByTagName('td')[1];
+      initTd = tr[i].getElementsByTagName('td')[2];
+      if (nameTd && initTd) {
+        nameValue = nameTd.textContent || nameTd.innerText;
+        initValue = initTd.textContent || initTd.innerText;
+        if (nameValue == formName || initValue == formInit) {
+          return false;
+        }
+      }
+    } return true;
+  }
+
+
+  onSubmit(form: NgForm) {    
     let name = form.value.name.toUpperCase();
     let initial = form.value.initial.toUpperCase();
+    let isavailable: boolean = this.verifyNames(name, initial);
 
+    if (isavailable) {
     this.http.get(`${ this.apiURL }/insert/estados/${name}/${initial}/${this.selectedCountryID}`)
              .subscribe(resultado => {
               console.log(`trying to insert ${name} in the table estado of country ${this.selectedCountryID}`)
@@ -42,6 +61,9 @@ export class AddStateScreenComponent implements OnInit {
     if (!this.error){
       alert("Cadastro realizado com sucesso");
     }
+  }else{
+    alert("Nome ou sigla informados não estão disponíveis");
+  }
     this.refreshStateList.emit();
     this.cancel();
   }

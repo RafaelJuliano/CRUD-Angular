@@ -21,12 +21,27 @@ export class AddCityScreenComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  verifyNames(formName:string) {
+    let table = <HTMLInputElement>document.getElementById("myTable")
+    let tr = table.getElementsByTagName('tr');
+    let i, td, nameValue, nameTd;
+    for (i = 0; i < tr.length; i++) {
+      nameTd = tr[i].getElementsByTagName('td')[1];     
+      if (nameTd) {
+        nameValue = nameTd.textContent || nameTd.innerText;       
+        if (nameValue == formName){
+          return false;
+        }
+      }
+    } return true;
+  }
 
-  onSubmit(form: NgForm) {
-    
+  onSubmit(form: NgForm) {    
     let name = form.value.name.toUpperCase();
+    let isavailable : boolean = this.verifyNames(name);
 
-    this.http.get(`${ this.apiURL }/insert/cidades/${name}/${this.selectedStateID}`)
+    if (isavailable){
+      this.http.get(`${ this.apiURL }/insert/cidades/${name}/${this.selectedStateID}`)
              .subscribe(resultado => {
               console.log(`trying to insert ${name} in the table estado of country ${this.selectedStateID}`)
             },
@@ -41,6 +56,10 @@ export class AddCityScreenComponent implements OnInit {
     if (!this.error){
       alert("Cadastro realizado com sucesso");
     }
+    }else{
+      alert("Nome informado não está disponível");
+    }
+    
     this.refreshCityList.emit();
     this.cancel();
   }
