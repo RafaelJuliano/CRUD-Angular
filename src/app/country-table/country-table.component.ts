@@ -14,7 +14,11 @@ export class CountryTableComponent implements OnInit {
   public countries :any;
   @Input() public addScreenVisible = false;
   @Input() public editScreenVisible = false;
+  @Input() public removeScreenVisible = false;
   public countryToEdit : any[] = [0, 'name'];
+  public countryToRemove : any[] = [0, 'name'];
+
+  public stateVerify : any;
 
   constructor(private http : HttpClient) {
     this.apiURL = 'http://localhost:8888';
@@ -57,4 +61,16 @@ export class CountryTableComponent implements OnInit {
     console.log('event = '+$event)
     this.editScreenVisible = $event;
   }
+
+  changeRemoveScreenVisible(id:number, name:string){
+    this.removeScreenVisible = !this.removeScreenVisible;
+    this.countryToRemove = [id, name];
+
+    console.log(`Remove country screen is visible = ${this.removeScreenVisible}`)
+  }
+
+  cancelRemoveScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.removeScreenVisible = $event;  }
+
 }

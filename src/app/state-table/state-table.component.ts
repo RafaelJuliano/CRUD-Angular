@@ -13,16 +13,20 @@ export class StateTableComponent implements OnInit {
   @Input() public selectedCountryID : number = 0;
   readonly apiURL : string;
   @Input() public editScreenVisible = false;
+  @Input() public removeScreenVisible = false;
   public stateToEdit : any[] = [0, 'name'];
+  public stateToRemove : any[] = [0, 'name'];
   inputValue : String | undefined;
   public states :any;
+
+
   
   constructor(private http : HttpClient) {
     this.apiURL = 'http://localhost:8888';
   }  
 
   ngOnInit(){
-    this.getStates();
+    this.getStates(); 
   }
 
   getStates() {
@@ -58,4 +62,15 @@ export class StateTableComponent implements OnInit {
     console.log('event = '+$event)
     this.editScreenVisible = $event;
   }
+
+  changeRemoveScreenVisible(id:number, name:string){
+    this.removeScreenVisible = !this.removeScreenVisible;
+    this.stateToRemove = [id, name];
+
+    console.log(`Remove state screen is visible = ${this.removeScreenVisible}`)
+  }
+
+  cancelRemoveScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.removeScreenVisible = $event;  }
 }

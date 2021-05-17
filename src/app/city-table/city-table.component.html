@@ -11,7 +11,10 @@
   <app-edit-city-screen [editScreenVisible]="editScreenVisible"
                           [cityToEdit]="cityToEdit"
                           (cancelEditScreen)="cancelEditScreenVisible($event)"
-                         (refreshCityList)="getCities()"></app-edit-city-screen>                        
+                         (refreshCityList)="getCities()"></app-edit-city-screen>                
+<app-remove-city-screen [removeScreenVisible]="removeScreenVisible" [cityToRemove]="cityToRemove"
+                         (cancelRemoveScreen)="cancelRemoveScreenVisible($event)" (refreshCityList)="getCities()">
+                       </app-remove-city-screen>       
 
 <!--STATE TABLE-->             
     <table #table id="myTable">
@@ -35,7 +38,7 @@
               (click)="changeEditScreenVisible(city.id_cidade, city.cidade_nome)">
                 <img src="/assets/icons/edit-icon.png" />
               </button>
-              <button class='remove'>
+              <button class='remove' (click)="changeRemoveScreenVisible(city.id_cidade, city.cidade_nome)">
                 <img src="/assets/icons/trash-icon.png" />
               </button>
             </td>

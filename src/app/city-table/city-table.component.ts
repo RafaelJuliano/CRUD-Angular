@@ -12,7 +12,9 @@ export class CityTableComponent implements OnInit {
   @Input() selectedStateID : number = 0;
   readonly apiURL : string;
   @Input() public editScreenVisible = false;
+  @Input() public removeScreenVisible = false;
   public cityToEdit : any[] = [0, 'name'];
+  public cityToRemove : any[] = [0, 'name'];
   public cities :any;
   
   constructor(private http : HttpClient) {
@@ -54,4 +56,15 @@ export class CityTableComponent implements OnInit {
     console.log('event = '+$event)
     this.editScreenVisible = $event;
   }
+
+  changeRemoveScreenVisible(id:number, name:string){
+    this.removeScreenVisible = !this.removeScreenVisible;
+    this.cityToRemove = [id, name];
+
+    console.log(`Remove city screen is visible = ${this.removeScreenVisible}`)
+  }
+
+  cancelRemoveScreenVisible($event : boolean){
+    console.log('event = '+$event)
+    this.removeScreenVisible = $event;  }
 }

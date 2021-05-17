@@ -12,6 +12,9 @@
                            [stateToEdit]="stateToEdit"
                            (cancelEditScreen)="cancelEditScreenVisible($event)"
                           (refreshStateList)="getStates()"></app-edit-state-screen>
+  <app-remove-state-screen [removeScreenVisible]="removeScreenVisible" [stateToRemove]="stateToRemove"
+    (cancelRemoveScreen)="cancelRemoveScreenVisible($event)" (refreshStateList)="getStates()">
+  </app-remove-state-screen>
 
 <!--STATE TABLE-->                          
   <table #table id="myTable">
@@ -37,7 +40,7 @@
             (click)="changeEditScreenVisible(state.id_estado, state.estado_nome)">
               <img src="/assets/icons/edit-icon.png" />
             </button>
-            <button class='remove'>
+            <button class='remove' (click)="changeRemoveScreenVisible(state.id_estado, state.estado_nome)">
               <img src="/assets/icons/trash-icon.png" />
             </button>
           </td>

@@ -1,0 +1,25 @@
+<div class="form" [class.visible]="removeScreenVisible">
+
+    <span>Para prosseguir, escreva abaixo o ID do país: {{countryToRemove[0]}}</span>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="input-box">
+        <input id="deleteID" name="deleteID" ngModel  type="number"  required placeholder="Digite o ID do país">
+      </div>      
+      <div class="button-box">
+        <button class="submit" type="submit" [disabled]="f.form.invalid">Gravar</button>
+        <button class="cancel" (click)="cancel()" type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  
+  <div class="form" [class.visible]="showConfirmationScreen">
+    <span>Tem certeza que deseja remover o país {{countryToRemove[1]}}?</span>
+  
+      <div class="button-box-confirmation">
+        <button class="submit" (click)="confirmDeletion()" type="submit" [disabled]="f.form.invalid">Gravar</button>
+        <button class="cancel" (click)="cancel()" type="button">Cancelar</button>
+      </div>
+
+  </div>
+
